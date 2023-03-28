@@ -21,6 +21,9 @@ public class Main {
     public static void main(String[] args) {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         ArrayList<String> todoList = new ArrayList<String>();
+        System.out.println(" would you like to do");
+
+
 
 
     }
