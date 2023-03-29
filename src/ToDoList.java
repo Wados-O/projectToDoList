@@ -2,17 +2,17 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TodoList {
-  private List<String> tasks;
+public class ToDoList {
+  private List<String> tasks; // исправлено: изменено имя переменной на "tasks"
   private String fileName;
 
-  public void TodoList(String fileName) {
+  public ToDoList(String fileName) { // исправлено: изменено имя конструктора на "ToDoList"
     this.fileName = fileName;
     this.tasks = new ArrayList<>();
-    readTaskFromFile();
+    readTasksFromFile();
   }
 
-  private void readTaskFromFile() {
+  private void readTasksFromFile() { // исправлено: изменено имя метода на "readTasksFromFile"
     try {
       BufferedReader br = new BufferedReader(new FileReader(fileName));
       String task;
@@ -21,11 +21,11 @@ public class TodoList {
       }
       br.close();
     } catch (IOException e) {
-      System.out.println(" Failed to read task from file: " + e.getMessage());
+      System.out.println("Failed to read tasks from file: " + e.getMessage());
     }
   }
 
-  private void writeTaskToFile() {
+  private void writeTasksToFile() { // исправлено: изменено имя метода на "writeTasksToFile"
     try {
       BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
       for (String task : tasks) {
@@ -39,13 +39,13 @@ public class TodoList {
 
   public void addTask(String task) {
     tasks.add(task);
-    writeTaskToFile();
+    writeTasksToFile();
   }
 
   public void removeTask(int index) {
     if (index >= 0 && index < tasks.size()) {
       tasks.remove(index);
-      writeTaskToFile();
+      writeTasksToFile();
     } else {
       System.out.println("Invalid task index: " + index);
     }
@@ -53,7 +53,7 @@ public class TodoList {
 
   public void printTasks() {
     if (tasks.isEmpty()) {
-      System.out.println("No tasks. ");
+      System.out.println("No tasks.");
     } else {
       for (int i = 0; i < tasks.size(); i++) {
         System.out.println(i + ": " + tasks.get(i));
