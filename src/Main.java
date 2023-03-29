@@ -22,11 +22,13 @@ public class Main {
         ToDoList toDoList = new ToDoList("tasks.txt");
 
         while (true) {
-            System.out.println("1.Добавить новую задачу:");
-            System.out.println("2.Удалить задачу");
-            System.out.println("3.Просмотреть список задач:");
-            System.out.println("4.Выйти из программы");
-            System.out.println("Выберите опцию:");
+            System.out.println("\u001B[31m============================\u001B");
+            System.out.println("\u001B[35m1.Добавить новую задачу\u001B");
+            System.out.println("\u001B[35m2.Удалить задачу\u001B");
+            System.out.println("\u001B[33m3.Просмотреть список задач:");
+            System.out.println("4.Выйти из программы\u001B[0m");
+            System.out.println("== Выберите опцию ==");
+            System.out.println("\u001B[31m============================\u001B[0m");
 
             int option = Integer.parseInt(br.readLine());
 
