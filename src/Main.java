@@ -23,54 +23,41 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        TodoList todoList = new TodoList("tasks.txt");
-//        ArrayList<String> todoList = new ArrayList<String>();
+        ArrayList<String> todoList = new ArrayList<String>();
+        System.out.println(" Добро пожаловать в список задач ");
+        System.out.println(" 1.Просмотреть список задач : ");
+        System.out.println(" 2.Добавить новою задачу :");
+        System.out.println(" 3.Удалить задачу ");
+        System.out.println(" 4.Выйти из програми ");
+        int option = Integer.parseInt(br.readLine());
 
-//        System.out.println(" Добро пожаловать в список задач ");
-//        System.out.println(" 1.Просмотреть список задач : ");
-//        System.out.println(" 2.Добавить новою задачу :");
-//        System.out.println(" 3.Удалить задачу ");
-//        System.out.println(" 4.Выйти из програми ");
-        while (true) {
-
-            System.out.println("1.Добавить новою задачу :");
-            System.out.println("2.Удалить задачу");
-            System.out.println("3.Просмотреть список задач :");
-            System.out.println("4.Выйти из программы");
-
-            System.out.println("Выберете опцию: ");
+                String itemToAdd = null;
 
 
 
-            int option = Integer.parseInt(br.readLine());
-            Integer.parseInt(br.readLine());
+                switch (option) {
+                    case 1:
+                        System.out.println("Просмотреть список задач : ");
+                        itemToAdd = br.readLine();
+                        break;
+                    case 2:
+                        System.out.println("Добавить новою задачу : ");
+                        itemToAdd = br.readLine();
 
-            switch (option) {
-                case 1:
-                    System.out.print("Выберите задачу : ");
-                    int task = Integer.parseInt(br.readLine());
-                    todoList.addTask(task);
-                    break;
+                        break;
+                    case 3:
 
-                case 2:
-                    System.out.print("Укажите позицию задачи в списке: ");
-                    int index = Integer.parseInt(br.readLine());
-                    Integer.parseInt(br.readLine());
-                    todoList.removeTask(index);
-                    break;
-                case 3:
-                    todoList.printTasks();
-                    break;
-                case 4:
-                    System.out.println("Хорошего дня,!");
-                    System.exit(0);
-                    break;
-                default:
-                    System.out.println("Неверный ввод: " + option);
+                        System.out.println("Удалить задачу ");
+                        itemToAdd = br.readLine();
+                        break;
+                    case 4:
+                        System.out.println("Выйти из програми ");
+                        itemToAdd = br.readLine();
+                        break;
 
 
-            }
+                }
 
-        }
+
     }
 }
