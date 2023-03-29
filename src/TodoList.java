@@ -2,14 +2,14 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ToDoList {
-  private List<String> task;
+public class TodoList {
+  private List<String> tasks;
   private String fileName;
 
   public void TodoList(String fileName) {
     this.fileName = fileName;
-    this.task = new ArrayList<>();
-    readTasksFromFile();
+    this.tasks = new ArrayList<>();
+    readTaskFromFile();
   }
 
   private void readTaskFromFile() {
@@ -39,7 +39,7 @@ public class ToDoList {
 
   public void addTask(String task) {
     tasks.add(task);
-    writeTasksToFile();
+    writeTaskToFile();
   }
 
   public void removeTask(int index) {

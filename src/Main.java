@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 
 public class Main {
     //пишем меню для приложенния
@@ -37,7 +36,6 @@ public class Main {
             System.out.println("2.Удалить задачу");
             System.out.println("3.Просмотреть список задач :");
             System.out.println("4.Выйти из программы");
-
             System.out.println("Выберете опцию: ");
 
 
