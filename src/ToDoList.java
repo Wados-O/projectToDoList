@@ -21,7 +21,7 @@ public class ToDoList {
             }
             br.close();
         } catch (IOException e) {
-            System.out.println("Failed to read tasks from file: " + e.getMessage());
+            System.out.println("Ошибка чтения с файла: " + e.getMessage());
         }
     }
 
@@ -33,7 +33,7 @@ public class ToDoList {
             }
             writer.close();
         } catch (IOException e) {
-            System.err.println("Failed to write tasks to file: " + e.getMessage());
+            System.err.println("Ошибка записи в файл: " + e.getMessage());
         }
     }
 
@@ -47,13 +47,13 @@ public class ToDoList {
             tasks.remove(index);
             writeTasksToFile();
         } else {
-            System.out.println("Invalid task index: " + index);
+            System.out.println("Неверный номер задачи " + index);
         }
     }
 
     public void printTasks() {
         if (tasks.isEmpty()) {
-            System.out.println("No tasks.");
+            System.out.println("Нет задачи.");
         } else {
             for (int i = 0; i < tasks.size(); i++) {
                 System.out.println(i + ": " + tasks.get(i));
