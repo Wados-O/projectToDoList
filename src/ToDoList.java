@@ -2,8 +2,6 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static jdk.internal.org.jline.utils.ShutdownHooks.tasks;
-
 public class ToDoList {
   private List<String> task;
   private String fileName;
@@ -18,7 +16,7 @@ public class ToDoList {
     try {
       BufferedReader br = new BufferedReader(new FileReader(fileName));
       String task;
-      while ((task = br.readLine()) !=null) {
+      while ((task = br.readLine()) != null) {
         tasks.add(task);
       }
       br.close();
@@ -26,14 +24,40 @@ public class ToDoList {
       System.out.println(" Failed to read task from file: " + e.getMessage());
     }
   }
+
   private void writeTaskToFile() {
     try {
       BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
       for (String task : tasks) {
         writer.write(task + "\n");
       }
+      writer.close();
+    } catch (IOException e) {
+      System.err.println("Failed to write tasks to file: " + e.getMessage());
     }
   }
 
+  public void addTask(String task) {
+    tasks.add(task);
+    writeTasksToFile();
+  }
 
+  public void removeTask(int index) {
+    if (index >= 0 && index < tasks.size()) {
+      tasks.remove(index);
+      writeTaskToFile();
+    } else {
+      System.out.println("Invalid task index: " + index);
+    }
+  }
+
+  public void printTasks() {
+    if (tasks.isEmpty()) {
+      System.out.println("No tasks. ");
+    } else {
+      for (int i = 0; i < tasks.size(); i++) {
+        System.out.println(i + ": " + tasks.get(i));
+      }
+    }
+  }
 }
