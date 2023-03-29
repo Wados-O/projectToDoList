@@ -3,61 +3,61 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ToDoList {
-  private List<String> tasks; // исправлено: изменено имя переменной на "tasks"
-  private String fileName;
+    private List<String> tasks;
+    private String fileName;
 
-  public ToDoList(String fileName) { // исправлено: изменено имя конструктора на "ToDoList"
-    this.fileName = fileName;
-    this.tasks = new ArrayList<>();
-    readTasksFromFile();
-  }
+    public ToDoList(String fileName) {
+        this.fileName = fileName;
+        this.tasks = new ArrayList<>();
+        readTasksFromFile();
+    }
 
-  private void readTasksFromFile() { // исправлено: изменено имя метода на "readTasksFromFile"
-    try {
-      BufferedReader br = new BufferedReader(new FileReader(fileName));
-      String task;
-      while ((task = br.readLine()) != null) {
+    private void readTasksFromFile() {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(fileName));
+            String task;
+            while ((task = br.readLine()) != null) {
+                tasks.add(task);
+            }
+            br.close();
+        } catch (IOException e) {
+            System.out.println("Failed to read tasks from file: " + e.getMessage());
+        }
+    }
+
+    private void writeTasksToFile() {
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
+            for (String task : tasks) {
+                writer.write(task + "\n");
+            }
+            writer.close();
+        } catch (IOException e) {
+            System.err.println("Failed to write tasks to file: " + e.getMessage());
+        }
+    }
+
+    public void addTask(String task) {
         tasks.add(task);
-      }
-      br.close();
-    } catch (IOException e) {
-      System.out.println("Failed to read tasks from file: " + e.getMessage());
+        writeTasksToFile();
     }
-  }
 
-  private void writeTasksToFile() { // исправлено: изменено имя метода на "writeTasksToFile"
-    try {
-      BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
-      for (String task : tasks) {
-        writer.write(task + "\n");
-      }
-      writer.close();
-    } catch (IOException e) {
-      System.err.println("Failed to write tasks to file: " + e.getMessage());
+    public void removeTask(int index) {
+        if (index >= 0 && index < tasks.size()) {
+            tasks.remove(index);
+            writeTasksToFile();
+        } else {
+            System.out.println("Invalid task index: " + index);
+        }
     }
-  }
 
-  public void addTask(String task) {
-    tasks.add(task);
-    writeTasksToFile();
-  }
-
-  public void removeTask(int index) {
-    if (index >= 0 && index < tasks.size()) {
-      tasks.remove(index);
-      writeTasksToFile();
-    } else {
-      System.out.println("Invalid task index: " + index);
+    public void printTasks() {
+        if (tasks.isEmpty()) {
+            System.out.println("No tasks.");
+        } else {
+            for (int i = 0; i < tasks.size(); i++) {
+                System.out.println(i + ": " + tasks.get(i));
+            }
+        }
     }
-  }
-
-  public void printTasks() {
-    if (tasks.isEmpty()) {
-      System.out.println("No tasks.");
-    } else {
-      for (int i = 0; i < tasks.size(); i++) {
-        System.out.println(i + ": " + tasks.get(i));
-      }
-    }
-  }
 }
