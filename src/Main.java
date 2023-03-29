@@ -23,10 +23,10 @@ public class Main {
 
         while (true) {
             System.out.println("\u001B[31m============================\u001B");
-            System.out.println("\u001B[35m1.Добавить новую задачу\u001B");
-            System.out.println("\u001B[35m2.Удалить задачу\u001B");
+            System.out.println("\u001B[35m1.Добавить новую задачу:\u001B");
+            System.out.println("\u001B[35m2.Удалить задачу:\u001B");
             System.out.println("\u001B[33m3.Просмотреть список задач:");
-            System.out.println("4.Выйти из программы\u001B[0m");
+            System.out.println("\u001B[36m4.Выйти из программы:\u001B[0m");
             System.out.println("== Выберите опцию ==");
             System.out.println("\u001B[31m============================\u001B[0m");
 
