@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ToDoList {
-    private List<String> tasks;
+    private List<Task> tasks;
     private String fileName;
 
     public ToDoList(String fileName) {
@@ -17,7 +17,7 @@ public class ToDoList {
             BufferedReader br = new BufferedReader(new FileReader(fileName));
             String task;
             while ((task = br.readLine()) != null) {
-                tasks.add(task);
+                tasks.add(new Task(task));
             }
             br.close();
         } catch (IOException e) {
@@ -28,7 +28,7 @@ public class ToDoList {
     private void writeTasksToFile() {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
-            for (String task : tasks) {
+            for (Task task : tasks) {
                 writer.write(task + "\n");
             }
             writer.close();
@@ -37,8 +37,8 @@ public class ToDoList {
         }
     }
 
-    public void addTask(String task) {
-        tasks.add(task);
+    public void addTask(String title) {
+        tasks.add(new Task(title));
         writeTasksToFile();
     }
 
@@ -51,13 +51,16 @@ public class ToDoList {
         }
     }
 
-    public void printTasks() {
+
+    public String printTasks() {
+        String result = "";
         if (tasks.isEmpty()) {
-            System.out.println("Нет задачи.");
+            result += "Нет задачи.";
         } else {
             for (int i = 0; i < tasks.size(); i++) {
-                System.out.println(i + ": " + tasks.get(i));
+                result += i + ": " + tasks.get(i) + "\n";
             }
         }
+        return result;
     }
 }

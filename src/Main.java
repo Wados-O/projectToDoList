@@ -19,7 +19,10 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         ToDoList toDoList = new ToDoList("tasks.txt");
 
-        while (true) {
+
+
+
+            while (true) {
             System.out.println("\u001B[31m============================\u001B");
             System.out.println("\u001B[35m1.Добавить новую задачу:\u001B");
             System.out.println("\u001B[35m2.Удалить задачу:\u001B");
@@ -42,7 +45,7 @@ public class Main {
                     toDoList.removeTask(index);
                     break;
                 case 3:
-                    toDoList.printTasks();
+                    System.out.println( toDoList.printTasks());
                     break;
                 case 4:
                     System.out.println("Хорошего дня!");
